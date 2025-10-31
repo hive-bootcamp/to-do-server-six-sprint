@@ -1,6 +1,6 @@
 package model
 
-var tasks = map[string]Task{
+var Tasks = map[string]Task{
 	"1": {
 		ID:          "1",
 		Description: "Сделать финальное задание темы REST API",
