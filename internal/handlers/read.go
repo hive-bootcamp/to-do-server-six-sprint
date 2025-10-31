@@ -20,8 +20,12 @@ func GetTasks(w http.ResponseWriter, r *http.Request) {
 	w.Write(response)
 }
 
-func getTask(w http.ResponseWriter, r *http.Request) {
+func GetTask(w http.ResponseWriter, r *http.Request) {
 	id := chi.URLParam(r, "id")
+	if id == "" {
+		http.Error(w, "id не может быть пустым", http.StatusBadRequest)
+		return
+	}
 
 	task, ok := model.Tasks[id]
 	if !ok {
