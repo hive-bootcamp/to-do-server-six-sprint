@@ -2,16 +2,19 @@ package route
 
 import (
 	"github.com/go-chi/chi/v5"
+	"github.com/hive-bootcamp/go-rest-api-homework/internal/handlers"
 )
 
 func New() *chi.Mux {
 	r := chi.NewRouter()
 
 	r.Route("/tasks", func(r chi.Router) {
-		r.Get("/tasks", GetTasks)
-		r.Get("/task/{id}", GetTask)
-		r.Post("/tasks", CreateTask)
-		r.Put("/task/{id}", UpdateTask)
-		r.Delete("/task/{id}", DeleteTask)
+		r.Get("/", handlers.GetTasks)
+		r.Get("/{id}", handlers.GetTask)
+		r.Post("/", handlers.CreateTask)
+		r.Put("/{id}", handlers.UpdateTask)
+		r.Delete("/{id}", handlers.DeleteTask)
 	})
+
+	return r
 }
